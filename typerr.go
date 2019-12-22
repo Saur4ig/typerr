@@ -1,9 +1,13 @@
 package typerr
 
-type Typerr struct {
-	Err string
+type typerr struct {
+	msg string
 }
 
-func (t Typerr) Error() string {
-	return t.Err
+func (t typerr) Error() string {
+	return t.msg
+}
+
+func (t typerr) New(msg string) error {
+	return &typerr{msg: msg}
 }
